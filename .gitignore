@@ -1,5 +1,12 @@
+#Object files
 *.o
+
+#static libraries
 *.a
+
+#executables
 *.out
 *.exe
 
+#directives 
+build/
