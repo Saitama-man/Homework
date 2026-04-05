@@ -2,7 +2,6 @@
 #define MAX 1000
 
 void print(char *str) {
-    int i = 0;
     while(*str) {
     printf("%c", *str);
     str++;
