@@ -7,7 +7,6 @@ int my_strcmp (const char *str, const char *str1) {
         str1++;
     }
     return *str - *str1;
-
 }
 
 void input (char *str) {
@@ -35,3 +34,6 @@ int main () {
     } while(a!=0);
     return 0;
 }
+
+
+
