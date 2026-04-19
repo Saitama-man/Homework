@@ -1,18 +1,23 @@
 #include <stdio.h>
 
-void print(char *p) {
-    while(*p) {
+void print(char *p)
+{
+    while (*p)
+    {
         printf("%c", *p);
         p++;
     }
     putchar('\n');
 }
 
-void delete_char(char *str, const char c) {
+void delete_char(char *str, const char c)
+{
     char *read = str;
     char *write = str;
-    while(*read) {
-        if(*read != c) {
+    while (*read)
+    {
+        if (*read != c)
+        {
             *write = *read;
             write++;
         }
@@ -31,14 +36,14 @@ void delete_char(char *str, const char c) {
 //     }
 // }
 
-// int is_polindrome (char *str) {
+// int is_palindrome (char *str) {
 //     format(str);
 //     delete_char(str, ' ');
 //     delete_char(str, '\t');
 //     delete_char(str, '\n');
 //     if(!*str) return 0;
 //     char *end = str;
-//     while(*end) { 
+//     while(*end) {
 //         end++;
 //     } end--;
 //     while(str<end) {
@@ -49,45 +54,49 @@ void delete_char(char *str, const char c) {
 //     return 1;
 // }
 
-int is_palindrome(char *str) {
+int is_palindrome(char *str)
+{
+    if (!*str)
+        return 0;
     char *left = str;
     char *right = str;
-    while (*right) right++;
+    while (*right)
+    {
+        right++;
+    }
     right--;
-
-    while (left < right) {
-
-        while (left < right && !((*left >= 'a' && *left <= 'z') ||
-                                (*left >= 'A' && *left <= 'Z') ||
-                                (*left >= '0' && *left <= '9'))) {
+    while (left < right)
+    {
+        while (left < right && !((*left >= 'A' && *left <= 'Z') ||
+                                 (*left >= '0' && *left <= '9') ||
+                                 (*left >= 'a' && *left <= 'z')))
+        {
             left++;
         }
-
-        while (left < right && !((*right >= 'a' && *right <= 'z') ||
-                                 (*right >= 'A' && *right <= 'Z') ||
-                                 (*right >= '0' && *right <= '9'))) {
+        while (left < right && !((*right >= 'A' && *right <= 'Z') ||
+                                 (*right >= '0' && *right <= '9') ||
+                                 (*right >= 'a' && *right <= 'z')))
+        {
             right--;
         }
-        char l = *left;
-        char r = *right;
-        if (l >= 'A' && l <= 'Z') l += 32;
-        if (r >= 'A' && r <= 'Z') r += 32;
-
-        if (l != r) return 0;
-
+        if (*right >= 'A' && *right <= 'Z')
+            *right += 32;
+        if (*left >= 'A' && *left <= 'Z')
+            *left += 32;
+        if (*right != *left)
+            return 0;
         left++;
         right--;
     }
-
     return 1;
 }
 
-
-int main() {
+int main()
+{
     char str[100];
     fgets(str, sizeof(str), stdin);
 
-    printf("%s", is_palindrome(str)?"true\n":"false\n");
+    printf("%s", is_palindrome(str) ? "true\n" : "false\n");
     print(str);
     return 0;
 }
